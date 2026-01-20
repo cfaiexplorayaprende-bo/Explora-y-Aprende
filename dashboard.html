@@ -4,22 +4,67 @@
 <meta charset="UTF-8">
 <title>Explora y Aprende</title>
 <link rel="stylesheet" href="style.css">
+<style>
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#f5f7fa;
+}
+header{
+  background:#4f46e5;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+section{
+  padding:20px;
+}
+.cards{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+.card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  text-align:center;
+  font-size:18px;
+}
+footer{
+  text-align:center;
+  padding:15px;
+  background:#e5e7eb;
+}
+</style>
 </head>
 <body>
 
-<h1>Bienvenidos a Explora y Aprende</h1>
+<header>
+<h1>🌈 Explora y Aprende</h1>
+<p>Plataforma educativa inclusiva</p>
+</header>
 
+<section>
+<h2>Bienvenidos</h2>
 <p>
-Este espacio está diseñado para estudiantes, familias, docentes y profesionales.
+Un espacio para estudiantes, familias, docentes y profesionales,
+enfocado en la atención a la diversidad.
 </p>
 
-<ul>
-  <li>📘 PIAR</li>
-  <li>🎲 Actividades</li>
-  <li>👨‍👩‍👧 Familias</li>
-  <li>👩‍🏫 Docentes</li>
-  <li>🧠 Profesionales</li>
-</ul>
+<div class="cards">
+  <div class="card">📘 PIAR</div>
+  <div class="card">🎲 Actividades</div>
+  <div class="card">👨‍👩‍👧 Familias</div>
+  <div class="card">👩‍🏫 Docentes</div>
+  <div class="card">🧠 Profesionales</div>
+</div>
+</section>
+
+<footer>
+Explora y Aprende © 2026
+</footer>
 
 </body>
 </html>

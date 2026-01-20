@@ -1,70 +1,182 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Explora y Aprende</title>
-<link rel="stylesheet" href="style.css">
-<style>
-body{
-  font-family: Arial, sans-serif;
-  margin:0;
-  background:#f5f7fa;
-}
-header{
-  background:#4f46e5;
-  color:white;
-  padding:20px;
-  text-align:center;
-}
-section{
-  padding:20px;
-}
-.cards{
-  display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-}
-.card{
-  background:white;
-  padding:20px;
-  border-radius:10px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.1);
-  text-align:center;
-  font-size:18px;
-}
-footer{
-  text-align:center;
-  padding:15px;
-  background:#e5e7eb;
-}
-</style>
+  <meta charset="UTF-8" />
+  <title>Explora y Aprende – Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ESTILOS GENERALES -->
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    header {
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    header img {
+      height: 48px;
+    }
+
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+      padding: 40px;
+      background: linear-gradient(90deg, #e8f4ff, #ffffff);
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .hero button {
+      background: #f5a623;
+      border: none;
+      padding: 14px 22px;
+      font-size: 16px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .hero img {
+      width: 100%;
+      border-radius: 16px;
+    }
+
+    .dashboard {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .progress {
+      margin-bottom: 12px;
+    }
+
+    .progress span {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .bar {
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .bar div {
+      height: 10px;
+      background: #4caf50;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+    }
+
+    @media(max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .dashboard { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-<h1>🌈 Explora y Aprende</h1>
-<p>Plataforma educativa inclusiva</p>
-</header>
+  <!-- HEADER -->
+  <header>
+    <img src="logo-explora.png" alt="Explora y Aprende" />
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Familias</a>
+      <a href="#">Estudiantes</a>
+      <a href="#">PIAR</a>
+      <a href="#">Evaluaciones</a>
+    </nav>
+  </header>
 
-<section>
-<h2>Bienvenidos</h2>
-<p>
-Un espacio para estudiantes, familias, docentes y profesionales,
-enfocado en la atención a la diversidad.
-</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1>Bienvenido a Explora y Aprende</h1>
+      <p>Apoyamos el aprendizaje inclusivo y el desarrollo integral de cada niño.</p>
+      <button>Ver progreso de mi hijo</button>
+    </div>
+    <img src="ninos-aprendiendo.jpg" alt="Niños aprendiendo" />
+  </section>
 
-<div class="cards">
-  <div class="card">📘 PIAR</div>
-  <div class="card">🎲 Actividades</div>
-  <div class="card">👨‍👩‍👧 Familias</div>
-  <div class="card">👩‍🏫 Docentes</div>
-  <div class="card">🧠 Profesionales</div>
-</div>
-</section>
+  <!-- DASHBOARD -->
+  <section class="dashboard">
 
-<footer>
-Explora y Aprende © 2026
-</footer>
+    <div class="card">
+      <h3>Progreso Académico</h3>
+
+      <div class="progress">
+        <span>Lectoescritura – 65%</span>
+        <div class="bar"><div style="width:65%"></div></div>
+      </div>
+
+      <div class="progress">
+        <span>Matemáticas – 80%</span>
+        <div class="bar"><div style="width:80%"></div></div>
+      </div>
+
+      <div class="progress">
+        <span>Emociones – 80%</span>
+        <div class="bar"><div style="width:80%"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Panel de Familias</h3>
+      <p><strong>Notificación:</strong> Recuerda actualizar el progreso académico para que los docentes estén al tanto.</p>
+      <p><strong>PIAR activo:</strong> Apoyo educativo personalizado según necesidades del estudiante.</p>
+      <button style="margin-top:10px">Actualizar PIAR</button>
+    </div>
+
+  </section>
+
+  <footer>
+    Aprender sin barreras – Explora y Aprende
+  </footer>
 
 </body>
 </html>

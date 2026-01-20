@@ -12,14 +12,18 @@
 </head>
 <body>
 
-<h1>Bienvenido a la plataforma</h1>
+<h1>Bienvenido a la plataforma Explora y Aprende</h1>
 <button id="logoutBtn">Cerrar sesión</button>
 
 <script src="script.js"></script>
 
+<script>
+firebase.auth().onAuthStateChanged(function(user) {
+  if (!user) {
+    window.location.href = "index.html";
+  }
+});
+</script>
+
 </body>
 </html>
-
-</html>
-
-

@@ -68,7 +68,7 @@
 
       auth.signInWithEmailAndPassword(email, password)
         .then(() => {
-          window.location.href = "dashboard.html";
+         window.location.href = "Dashboard.html";
         })
         .catch((error) => {
           manejarErrorFirebase(error);
@@ -127,3 +127,4 @@
   }
 
 });
+

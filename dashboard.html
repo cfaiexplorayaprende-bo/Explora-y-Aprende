@@ -1,182 +1,134 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Explora y Aprende – Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Bell, BookOpen, BarChart3, Users, GraduationCap } from "lucide-react";
+import { motion } from "framer-motion";
 
-  <!-- ESTILOS GENERALES -->
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: #f4f6f9;
-      color: #333;
-    }
+export default function ExploraAprendeDashboard() {
+  const [vista, setVista] = useState("inicio");
 
-    header {
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    }
+  const progresoYurley = [
+    { area: "Lectoescritura", valor: 65 },
+    { area: "Matemáticas", valor: 80 },
+    { area: "Inglés", valor: 45 },
+    { area: "Emociones", valor: 80 },
+    { area: "Movimiento", valor: 55 },
+  ];
 
-    header img {
-      height: 48px;
-    }
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 to-emerald-50 p-6">
+      {/* Header */}
+      <header className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold text-emerald-600">Explora y Aprende</h1>
+        <nav className="flex gap-3">
+          <Button variant="ghost" onClick={() => setVista("inicio")}>Inicio</Button>
+          <Button variant="ghost" onClick={() => setVista("padres")}>Padres</Button>
+          <Button variant="ghost" onClick={() => setVista("estudiantes")}>Estudiantes</Button>
+          <Button variant="ghost" onClick={() => setVista("piar")}>PIAR</Button>
+          <Button variant="ghost" onClick={() => setVista("evaluaciones")}>Evaluaciones</Button>
+        </nav>
+      </header>
 
-    nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
+      {/* Contenido dinámico */}
+      {vista === "inicio" && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid md:grid-cols-2 gap-6">
+          <Card className="rounded-2xl shadow-md">
+            <CardContent className="p-6">
+              <h2 className="text-xl font-semibold mb-4">Bienvenido/a, Yurley 👋</h2>
+              <p className="mb-4 text-slate-600">Continúa aprendiendo y descubre tus resultados:</p>
+              <div className="space-y-4">
+                {progresoYurley.map((item) => (
+                  <div key={item.area}>
+                    <div className="flex justify-between text-sm mb-1">
+                      <span>{item.area}</span>
+                      <span>{item.valor}%</span>
+                    </div>
+                    <Progress value={item.valor} />
+                  </div>
+                ))}
+              </div>
+              <div className="flex gap-3 mt-6">
+                <Button className="flex-1" onClick={() => setVista("estudiantes")}>
+                  Seguir Aprendiendo
+                </Button>
+                <Button variant="secondary" className="flex-1" onClick={() => setVista("evaluaciones")}>
+                  Ver Resultados
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
 
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 24px;
-      padding: 40px;
-      background: linear-gradient(90deg, #e8f4ff, #ffffff);
-      align-items: center;
-    }
+          <Card className="rounded-2xl shadow-md">
+            <CardContent className="p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <Bell className="w-5 h-5" />
+                <h2 className="text-lg font-semibold">Notificaciones</h2>
+              </div>
+              <p className="text-slate-600 mb-4">
+                Recuerda actualizar el Progreso Académico de Juan y Ana para que los docentes estén al tanto de sus avances.
+              </p>
+              <Button onClick={() => setVista("padres")}>Ir al Panel de Padres</Button>
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
 
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 12px;
-    }
+      {vista === "padres" && (
+        <motion.div initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className="grid md:grid-cols-2 gap-6">
+          <Card className="rounded-2xl shadow-md">
+            <CardContent className="p-6">
+              <h2 className="text-xl font-semibold mb-2">Panel de Padres 👨‍👩‍👧‍👦</h2>
+              <p className="text-slate-600 mb-4">Controla el progreso y apoyo de tus hijos.</p>
+              <ul className="space-y-3">
+                <li>📘 Juan Pérez (8 años) – TDAH – Avance: 50%</li>
+                <li>📗 Ana Gómez (7 años) – TEL – Avance: 50%</li>
+              </ul>
+              <div className="flex gap-3 mt-6">
+                <Button onClick={() => setVista("piar")}>Actualizar PIAR</Button>
+                <Button variant="secondary" onClick={() => setVista("evaluaciones")}>Ver Evaluaciones</Button>
+              </div>
+            </CardContent>
+          </Card>
 
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
+          <Card className="rounded-2xl shadow-md">
+            <CardContent className="p-6">
+              <h3 className="font-semibold mb-2">Recomendación Educativa</h3>
+              <p className="text-slate-600">
+                Para Juan: dedicar 10 minutos diarios de lectura de cuentos en casa.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
 
-    .hero button {
-      background: #f5a623;
-      border: none;
-      padding: 14px 22px;
-      font-size: 16px;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+      {vista === "piar" && (
+        <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>
+          <Card className="rounded-2xl shadow-md max-w-2xl mx-auto">
+            <CardContent className="p-6">
+              <h2 className="text-xl font-semibold mb-4">Apoyo Educativo Personalizado (PIAR)</h2>
+              <p className="mb-3">✏️ Aquí los padres pueden escribir observaciones, ajustes y apoyos necesarios.</p>
+              <textarea
+                className="w-full h-32 border rounded-xl p-3"
+                placeholder="Escribe aquí tus observaciones o necesidades específicas del estudiante..."
+              />
+              <Button className="mt-4">Guardar Actualización</Button>
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
 
-    .hero img {
-      width: 100%;
-      border-radius: 16px;
-    }
-
-    .dashboard {
-      padding: 32px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.08);
-    }
-
-    .card h3 {
-      margin-top: 0;
-    }
-
-    .progress {
-      margin-bottom: 12px;
-    }
-
-    .progress span {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-
-    .bar {
-      background: #e0e0e0;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .bar div {
-      height: 10px;
-      background: #4caf50;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #777;
-    }
-
-    @media(max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .dashboard { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- HEADER -->
-  <header>
-    <img src="logo-explora.png" alt="Explora y Aprende" />
-    <nav>
-      <a href="#">Inicio</a>
-      <a href="#">Familias</a>
-      <a href="#">Estudiantes</a>
-      <a href="#">PIAR</a>
-      <a href="#">Evaluaciones</a>
-    </nav>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <h1>Bienvenido a Explora y Aprende</h1>
-      <p>Apoyamos el aprendizaje inclusivo y el desarrollo integral de cada niño.</p>
-      <button>Ver progreso de mi hijo</button>
+      {vista === "evaluaciones" && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <Card className="rounded-2xl shadow-md max-w-xl mx-auto">
+            <CardContent className="p-6">
+              <h2 className="text-xl font-semibold mb-4">Evaluaciones Académicas 📊</h2>
+              <p className="text-slate-600">Consulta reportes detallados por área y descarga informes.</p>
+              <Button className="mt-4">Descargar Reporte</Button>
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
     </div>
-    <img src="ninos-aprendiendo.jpg" alt="Niños aprendiendo" />
-  </section>
-
-  <!-- DASHBOARD -->
-  <section class="dashboard">
-
-    <div class="card">
-      <h3>Progreso Académico</h3>
-
-      <div class="progress">
-        <span>Lectoescritura – 65%</span>
-        <div class="bar"><div style="width:65%"></div></div>
-      </div>
-
-      <div class="progress">
-        <span>Matemáticas – 80%</span>
-        <div class="bar"><div style="width:80%"></div></div>
-      </div>
-
-      <div class="progress">
-        <span>Emociones – 80%</span>
-        <div class="bar"><div style="width:80%"></div></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Panel de Familias</h3>
-      <p><strong>Notificación:</strong> Recuerda actualizar el progreso académico para que los docentes estén al tanto.</p>
-      <p><strong>PIAR activo:</strong> Apoyo educativo personalizado según necesidades del estudiante.</p>
-      <button style="margin-top:10px">Actualizar PIAR</button>
-    </div>
-
-  </section>
-
-  <footer>
-    Aprender sin barreras – Explora y Aprende
-  </footer>
-
-</body>
-</html>
+  );
+}

@@ -2,28 +2,24 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Dashboard</title>
-
+<title>Explora y Aprende</title>
 <link rel="stylesheet" href="style.css">
-
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="firebase-config.js"></script>
 </head>
 <body>
 
-<h1>Bienvenido a la plataforma Explora y Aprende</h1>
-<button id="logoutBtn">Cerrar sesión</button>
+<h1>Bienvenidos a Explora y Aprende</h1>
 
-<script src="script.js"></script>
+<p>
+Este espacio está diseñado para estudiantes, familias, docentes y profesionales.
+</p>
 
-<script>
-firebase.auth().onAuthStateChanged(function(user) {
-  if (!user) {
-    window.location.href = "index.html";
-  }
-});
-</script>
+<ul>
+  <li>📘 PIAR</li>
+  <li>🎲 Actividades</li>
+  <li>👨‍👩‍👧 Familias</li>
+  <li>👩‍🏫 Docentes</li>
+  <li>🧠 Profesionales</li>
+</ul>
 
 </body>
 </html>
